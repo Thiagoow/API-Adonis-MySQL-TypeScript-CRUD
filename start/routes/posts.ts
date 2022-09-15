@@ -5,9 +5,9 @@ Route.resource('posts', 'PostsController')
   .middleware({
     /* Require auth with Access 
     Control Level for these routes: */
-    store: ['acl:admin, normal'],
-    update: ['acl:admin, normal'],
-    destroy: ['acl:admin, normal'],
+    store: ['acl:admin'],
+    update: ['acl:admin'],
+    destroy: ['acl:admin'],
     /* It's an array because we
     can have multiple middleware */
   })
