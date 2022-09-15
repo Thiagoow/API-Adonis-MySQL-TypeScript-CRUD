@@ -12,9 +12,17 @@ export default class extends BaseSeeder {
   as well, so that adonis can hash the password:
     yarn add phc-argon2 */
   public async run() {
-    await User.create({
-      email: 'adminUser@email.com',
-      password: 'secretAdminPass:p',
-    })
+    await User.createMany([
+      {
+        email: 'adminUser@email.com',
+        password: 'secretAdminPass',
+        role: 'admin',
+      },
+      {
+        email: 'normalUser@email.com',
+        password: 'secretUserPass',
+        role: 'normal',
+      },
+    ])
   }
 }
