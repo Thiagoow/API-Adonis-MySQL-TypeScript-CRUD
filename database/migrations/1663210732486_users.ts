@@ -8,11 +8,10 @@ export default class UsersSchema extends BaseSchema {
       table.increments('id').primary()
       table.string('email', 255).notNullable()
       table.string('password', 180).notNullable()
-      table.string('remember_me_token').nullable()
+      table.enu('role', ['admin', 'normal']).defaultTo('normal')
 
-      /**
-       * Uses timestampz for PostgreSQL and DATETIME2 for MSSQL
-       */
+      //Please don't delete this token:
+      table.string('remember_me_token').nullable()
       table.timestamp('created_at', { useTz: true }).notNullable()
       table.timestamp('updated_at', { useTz: true }).notNullable()
     })
