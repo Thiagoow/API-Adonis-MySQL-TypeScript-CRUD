@@ -1,8 +1,9 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, belongsTo, BelongsTo, CherryPick } from '@ioc:Adonis/Lucid/Orm'
+import NameBaseModel from 'App/Models/NameBaseModel'
+import { column, belongsTo, BelongsTo, CherryPick } from '@ioc:Adonis/Lucid/Orm'
 import User from './User'
 
-export default class Post extends BaseModel {
+export default class Post extends NameBaseModel {
   @column({ isPrimary: true })
   public id: number
 
