@@ -1,5 +1,5 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, belongsTo, BelongsTo } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, column, belongsTo, BelongsTo, CherryPick } from '@ioc:Adonis/Lucid/Orm'
 import User from './User'
 
 export default class Post extends BaseModel {
@@ -35,4 +35,23 @@ export default class Post extends BaseModel {
     },
   })
   public updatedAt: DateTime
+
+  public serialize(cherryPick?: CherryPick) {
+    return {
+      ...this.serializeAttributes(cherryPick?.fields, false),
+      ...this.serializeComputed(cherryPick?.fields),
+      ...this.serializeRelations(
+        {
+          author: {
+            //Only show these fields on response:
+            fields: ['id', 'name', 'email'],
+            /* If instead it's better to choose which 
+            columns i want to omit from response:
+              fields: { omit: ['column'] }, */
+          },
+        },
+        false
+      ),
+    }
+  }
 }
