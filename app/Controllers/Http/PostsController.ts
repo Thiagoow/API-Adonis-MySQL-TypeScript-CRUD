@@ -17,27 +17,23 @@ export default class PostsController {
     const user = await auth.authenticate()
 
     const post = await Post.create({ authorId: user.id, ...data })
+    return post
+  }
+
+  public async show({ params }: HttpContextContract) {
+    const post = await Post.findOrFail(params.id)
     //Same name as the relation on Post model:
     await post.load('author')
 
     return post
   }
 
-  public async show({ params }: HttpContextContract) {
-    const post = await Post.findOrFail(params.id)
-    await post.load('author')
-    return post
-  }
-
   public async update({ params, request }: HttpContextContract) {
     const post = await Post.findOrFail(params.id)
     const data = await request.validate(UpdateValidator)
-    //Replace/merge data on post:
+
     post.merge(data)
-    //Save on database:
     await post.save()
-    //Load author relation:
-    await post.load('author')
 
     return post
   }
