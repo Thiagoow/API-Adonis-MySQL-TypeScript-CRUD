@@ -3,7 +3,7 @@
 <img src="./docs/app.jpg" align="center">
 </div>-->
 
-# AdonisJs API - TypeScript, Docker MySQL & Lucid ORM 🗃
+# AdonisJs API - TypeScript, Docker MySQL & Lucid ORM
 
 <p>Essa API Rest foi feita por: <strong>Thiago Silva Lopes</strong>, em 09/2022.</p>
 <p>Sendo utilizada no projeto -> <a href="">
