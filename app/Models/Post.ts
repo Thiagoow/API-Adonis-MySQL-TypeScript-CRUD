@@ -12,7 +12,7 @@ export default class Post extends BaseModel {
   @column()
   public content: string
 
-  @column()
+  @column({ serializeAs: null })
   public authorId: number
 
   @belongsTo(() => User, { foreignKey: 'authorId' })
