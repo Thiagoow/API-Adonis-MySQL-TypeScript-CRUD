@@ -26,7 +26,8 @@ $ node ace migration:run
 # Criar os primeiros usuários com a seed:
 $ node ace db:seed
 
-# Crie um arquivo ".env" na pasta raiz com base no arquivo ".env.example". Preencha as vars de acordo com o "docker-compose.yml";
+# Crie um arquivo ".env" na pasta raiz com base no arquivo ".env.example";
+# Preencha as vars de acordo com o "docker-compose.yml";
 
 # Iniciar a API:
 $ yarn dev
