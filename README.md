@@ -26,9 +26,7 @@ $ node ace migration:run
 # Criar os primeiros usuários com a seed:
 $ node ace db:seed
 
-# Crie um arquivo ".env" na pasta raiz com base no arquivo ".env.example"
-
-# Preencher as vars de acordo com o arquivo "docker-compose.yml";
+# Crie um arquivo ".env" na pasta raiz com base no arquivo ".env.example". Preencha as vars de acordo com o "docker-compose.yml";
 
 # Iniciar a API:
 $ yarn dev
@@ -36,6 +34,9 @@ $ yarn dev
 # Construir para produção e executar o servidor:
 $ yarn build
 $ yarn start
+
+# Remover o container:
+$ docker-compose down -v
 ```
 
 <small>
