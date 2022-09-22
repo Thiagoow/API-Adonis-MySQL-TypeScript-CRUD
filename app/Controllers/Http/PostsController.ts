@@ -28,9 +28,13 @@ export default class PostsController {
     return post
   }
 
-  public async update({ params, request }: HttpContextContract) {
+  public async update({ params, request, auth, response }: HttpContextContract) {
     const post = await Post.findOrFail(params.id)
     const data = await request.validate(UpdateValidator)
+
+    if (auth.user?.id !== post.authorId) {
+      return response.unauthorized()
+    }
 
     post.merge(data)
     await post.save()
@@ -38,8 +42,13 @@ export default class PostsController {
     return post
   }
 
-  public async destroy({ params }: HttpContextContract) {
+  public async destroy({ params, auth, response }: HttpContextContract) {
     const post = await Post.findOrFail(params.id)
+
+    if (auth.user?.id !== post.authorId) {
+      return response.unauthorized()
+    }
+
     await post.delete()
   }
 }
