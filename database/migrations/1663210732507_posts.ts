@@ -18,8 +18,8 @@ export default class extends BaseSchema {
         .onUpdate('CASCADE')
         .onDelete('CASCADE')
 
-      table.timestamp('created_at', { useTz: true })
-      table.timestamp('updated_at', { useTz: true })
+      table.timestamp('created_at', { useTz: true }).nullable()
+      table.timestamp('updated_at', { useTz: true }).nullable()
     })
   }
 
