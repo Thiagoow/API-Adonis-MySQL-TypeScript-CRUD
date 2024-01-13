@@ -13,8 +13,8 @@ export default class UsersSchema extends BaseSchema {
 
       //Please don't delete this token:
       table.string('remember_me_token').nullable()
-      table.timestamp('created_at', { useTz: true }).notNullable()
-      table.timestamp('updated_at', { useTz: true }).notNullable()
+      table.timestamp('created_at', { useTz: true }).notNullable().defaultTo(this.now())
+      table.timestamp('updated_at', { useTz: true }).notNullable().defaultTo(this.now())
     })
   }
 
